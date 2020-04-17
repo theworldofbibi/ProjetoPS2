@@ -1,5 +1,8 @@
 package br.mack;
 
+import br.mack.Carro.Carro;
+import br.mack.Carro.CarroDAO;
+
 import br.mack.Pais.PaisDAO;
 import br.mack.Pais.Pais;
 
@@ -8,6 +11,7 @@ import java.util.Scanner;
 
 public class InterfaceUsuario {
     PaisDAO dao;
+    CarroDAO carroDAO;
     Scanner in;
 
     public InterfaceUsuario(PaisDAO dao) {
@@ -60,6 +64,7 @@ public class InterfaceUsuario {
         } while (opc != 5);
     }
 
+    // CRUD - País by TAYNÁ
     private void create() {
         Pais pais = new Pais();
 
@@ -181,6 +186,115 @@ public class InterfaceUsuario {
                             " removido com sucesso");
                 } else {
                     System.out.println("OPS: falar ao tentar remover");
+                }
+                //Isso para o while infinito
+                break;
+            }
+        }
+    }
+
+    // CRUD - Carro by DANILO
+    private void createCarro() {
+        Carro carro = new Carro();
+
+        System.out.println("\n******************");
+        System.out.println("*** Novo Carro ***");
+        System.out.println("******************");
+        System.out.print("\nInforme a PLACA do carro: ");
+        carro.setIdCarro(in.nextLine());
+        in.nextLine();
+
+        System.out.print("Informe o MODELO do carro: ");
+        carro.setModelo(in.nextLine());
+
+        System.out.print("Informe o ANO do carro: ");
+        carro.setAno(in.nextInt());
+
+        System.out.print("Informe a CATEGORIA do carro: ");
+        carro.setCategoria(in.nextLine());
+
+
+        if (carroDAO.create(carro)) {
+            System.out.println("Carro adicionado ao banco de Dados");
+        } else {
+            System.out.println("Ops: problema ao adicionar o pais");
+        }
+    }
+    private void readCarro() {
+        List<Carro> carros = carroDAO.read();
+
+        System.out.println("\n***********************************");
+        System.out.println("*** Lista de Carros Cadastrados ***");
+        System.out.println("***********************************");
+        for(Carro carro : carros) {
+            System.out.println(carro);
+        }
+    }
+    private void updateCarro() {
+        Carro carro = new Carro();
+
+        List<Carro> carros = carroDAO.read();
+        for(Carro carro1 : carros) {
+            System.out.println(carro1);
+        }
+
+        System.out.println("\n***********************************");
+        System.out.println("*** Lista de Carros Cadastrados ***");
+        System.out.println("***********************************");
+
+        System.out.println("Informe a PLACA do carro que deseja alterar os dados: ");
+        carro.setIdCarro(in.nextLine());
+
+        System.out.print("\nInforme o MODELO do carro: ");
+        carro.setModelo(in.nextLine());
+
+        System.out.print("Informe o MARCA do carro: ");
+        carro.setMarca(in.nextLine());
+
+        System.out.print("Informe a ANO do carro: ");
+        carro.setAno(in.nextInt());
+
+        System.out.print("Informe o CATEGORIA do carro: ");
+        carro.setCategoria(in.nextLine());
+
+        if (carroDAO.update(carro)) {
+            System.out.println("Dados do carro da placa "+carro.getIdCarro()+" alterados!");
+        } else {
+            System.out.println("OPS: falar ao tentar alterar dados");
+        }
+    }
+    private void deleteCarro() {
+        List<Carro> carros = carroDAO.read();
+
+        while (true) {
+            System.out.println("\n***********************************");
+            System.out.println("*** Lista de Paises Cadastrados ***");
+            System.out.println("***********************************");
+            int i = 0;
+            for (Carro carro : carros) {
+                System.out.println(i + " - " + carro);
+                i++;
+            }
+            System.out.println(i + " - Cancelar operação");
+
+            System.out.print("Qual carro deseja remover? ");
+            int opc = in.nextInt();
+            //Necessário para ler a quebra de linha (enter)
+            in.nextLine();
+
+            if (opc==i) {
+                // Cancelar operação
+                break;
+            }
+
+            if (opc >= carros.size() || opc < 0) {
+                System.out.println("Esta opção não é válida");
+            } else {
+                if (carroDAO.delete(carros.get(opc))) {
+                    System.out.println("Carro da Placa: " + carros.get(opc).getIdCarro() +
+                            " removido com sucesso");
+                } else {
+                    System.out.println("OPS: falha ao tentar remover");
                 }
                 //Isso para o while infinito
                 break;

@@ -13,7 +13,7 @@ import java.util.List;
 public class CarroDAOMySQL implements CarroDAO{
     private String createSQL = "INSERT INTO Carro VALUES (?, ?, ?, ?, ?)";
     private String readSQL = "SELECT * FROM Carro";
-    private String updateSQL = "UPDATE Carro SET modelo=?, marca=?, ano=?, categoria=?, idCarro=?  WHERE idCarro=?";
+    private String updateSQL = "UPDATE Carro SET modelo=?, marca=?, ano=?, categoria=? WHERE idCarro=?";
     private String deleteSQL = "DELETE FROM Carro WHERE idCarro=?";
 
     private final MySQLConnection mysql = new MySQLConnection();
@@ -94,20 +94,14 @@ public class CarroDAOMySQL implements CarroDAO{
         try {
             PreparedStatement stm = conexao.prepareStatement(updateSQL);
 
-            //Inicializando os valores
-            // cuidado com a ordem, eh diferente do insert
+            stm.setString(5, carro.getIdCarro());
             stm.setString(1, carro.getModelo());
             stm.setString(2, carro.getMarca());
             stm.setInt(3, carro.getAno());
             stm.setString(4, carro.getCategoria());
-            stm.setString(5, carro.getIdCarro());
-            stm.setString(6, carro.getIdCarro());
 
             int registros = stm.executeUpdate();
 
-            // Se a quantidade de registros modificados
-            // forem maiores que 1, significa que os dados
-            // foram inserido corretamente
             return registros > 0 ? true : false;
 
         } catch (final SQLException ex) {
