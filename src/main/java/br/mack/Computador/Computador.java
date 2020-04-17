@@ -1,3 +1,5 @@
+package br.mack.Computador;
+
 public class Computador {
         private String idComputador;
         private String marcaComputador;

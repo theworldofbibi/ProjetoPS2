@@ -23,7 +23,7 @@ public class PaisDAOMySQL implements PaisDAO {
             PreparedStatement stm = conexao.prepareStatement(createSQL);
 
             //Inicializando os valores
-            stm.setLong(1, pais.getIdPais());
+            stm.setString(1, pais.getIdPais());
             stm.setString(2, pais.getNome());
             stm.setString(3, pais.getContinente());
             stm.setString(4, pais.getPopulacao());
@@ -60,7 +60,7 @@ public class PaisDAOMySQL implements PaisDAO {
 
             while (rs.next()) {
                 Pais pais = new Pais();
-                pais.setIdPais(rs.getLong("idPais"));
+                pais.setIdPais(rs.getString("idPais"));
                 pais.setNome(rs.getString("nome"));
                 pais.setContinente(rs.getString("continente"));
                 pais.setPopulacao(rs.getString("populacao"));
@@ -93,7 +93,7 @@ public class PaisDAOMySQL implements PaisDAO {
             stm.setString(1, pais.getNome());
             stm.setString(2, pais.getContinente());
             stm.setString(3, pais.getPopulacao());
-            stm.setLong(3,pais.getIdPais());
+            stm.setString(4,pais.getIdPais());
 
             int registros = stm.executeUpdate();
 
@@ -124,7 +124,7 @@ public class PaisDAOMySQL implements PaisDAO {
 
             //Inicializando os valores
             // cuidado com a ordem, eh diferente do insert
-            stm.setLong(1, pais.getIdPais());
+            stm.setString(1, pais.getIdPais());
 
             int registros = stm.executeUpdate();
 

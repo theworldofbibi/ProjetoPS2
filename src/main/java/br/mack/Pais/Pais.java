@@ -1,25 +1,25 @@
 package br.mack.Pais;
 
 public class Pais {
-    private long idPais;
+    private String idPais;
     private String nome;
     private String continente;
     private String populacao;
 
     public Pais() {}
 
-    public Pais(long idPais, String nome, String continente,String populacao) {
+    public Pais(String idPais, String nome, String continente,String populacao) {
         this.setIdPais(idPais);
         this.setNome(nome);
         this.setContinente(continente);
         this.setPopulacao(populacao);
     }
 
-    public long getIdPais() {
+    public String getIdPais() {
         return idPais;
     }
 
-    public void setIdPais(long idPais) {
+    public void setIdPais(String idPais) {
         this.idPais = idPais;
     }
 

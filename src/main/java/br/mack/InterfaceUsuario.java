@@ -29,15 +29,14 @@ public class InterfaceUsuario {
             System.out.println("\n==============");
             System.out.println("==== Menu ====");
             System.out.println("==============");
-            System.out.println("\t1. Create");
-            System.out.println("\t2. Read");
-            System.out.println("\t3. Update");
-            System.out.println("\t4. Delete");
+            System.out.println("\t1. Criar");
+            System.out.println("\t2. Listar");
+            System.out.println("\t3. Alterar Dados");
+            System.out.println("\t4. Deletar Dados");
             System.out.println("\t5. sair");
             System.out.print("Escolha uma opção: ");
             opc = in.nextInt();
 
-            //necessário para ler a quebra de linha (enter)
             in.nextLine();
 
             switch (opc) {
@@ -72,8 +71,7 @@ public class InterfaceUsuario {
         System.out.println("*** Novo Pais ***");
         System.out.println("******************");
         System.out.print("\nInforme a identificação do pais: ");
-        pais.setIdPais(in.nextLong());
-        //necessário para ler o \n da entrada (enter)
+        pais.setIdPais(in.nextLine());
         in.nextLine();
 
         System.out.print("Informe o NOME do pais: ");
@@ -134,7 +132,7 @@ public class InterfaceUsuario {
             pais.setPopulacao(in.nextLine());
 
             System.out.print("Informe o IDENTIFICADOR do pais: ");
-            pais.setIdPais(in.nextLong());
+            pais.setIdPais(in.nextLine());
 
             if (opc==i) {
                 // Cancelar operação
