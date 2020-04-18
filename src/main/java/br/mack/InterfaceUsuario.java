@@ -13,13 +13,15 @@ import java.util.List;
 import java.util.Scanner;
 
 public class InterfaceUsuario {
-    PaisDAO dao;
+    PaisDAO paisDAO;
     CarroDAO carroDAO;
     ComputadorDAO computadorDAO;
     Scanner in;
 
-    public InterfaceUsuario(PaisDAO dao) {
-        this.dao = dao;
+    public InterfaceUsuario(PaisDAO paisDAO, CarroDAO carroDAO, ComputadorDAO computadorDAO) {
+        this.paisDAO = paisDAO;
+        this.carroDAO = carroDAO;
+        this.computadorDAO = computadorDAO;
         this.in = new Scanner(System.in);
     }
 
@@ -27,17 +29,45 @@ public class InterfaceUsuario {
         imprimirMenu();
     }
 
-    private void imprimirMenu() {
+    private void imprimirMenu(){
         int opc = 0;
         do {
-            System.out.println("\n==============");
-            System.out.println("==== Menu ====");
-            System.out.println("==============");
-            System.out.println("\t1. Criar");
-            System.out.println("\t2. Listar");
+            System.out.println("\n================================");
+            System.out.println("==== Menu De Banco de Dados ====");
+            System.out.println("================================");
+            System.out.println("\t1. Acessar Carro ");
+            System.out.println("\t2. Acessar Computador");
+            System.out.println("\t3. Acessar Pais");
+            System.out.println("\t4. Sair");
+            System.out.print("Escolha uma opção: ");
+            opc = in.nextInt();
+            in.nextLine();
+
+            switch (opc) {
+                case 1:
+                    this.imprimirMenuCarro();
+                    break;
+                case 2:
+                    this.imprimirMenuComputador();
+                    break;
+                case 3:
+                    this.imprimirMenuPais();
+                    break;
+            }
+        } while (opc != 4);
+    }
+
+    private void imprimirMenuPais() {
+        int opc = 0;
+        do {
+            System.out.println("\n===================");
+            System.out.println("==== Menu: PAIS====");
+            System.out.println("===================");
+            System.out.println("\t1. Criar Pais");
+            System.out.println("\t2. Listar Paises");
             System.out.println("\t3. Alterar Dados");
             System.out.println("\t4. Deletar Dados");
-            System.out.println("\t5. sair");
+            System.out.println("\t5. Sair");
             System.out.print("Escolha uma opção: ");
             opc = in.nextInt();
 
@@ -55,6 +85,84 @@ public class InterfaceUsuario {
                     break;
                 case 4:
                     this.deletePais();
+                    break;
+                case 5:
+                    System.out.println("Tchau!");
+                    break;
+                default:
+                    System.out.println("Opção Inválida!");
+                    break;
+            }
+
+        } while (opc != 5);
+    }
+    private void imprimirMenuCarro() {
+        int opc = 0;
+        do {
+            System.out.println("\n=====================");
+            System.out.println("==== Menu: CARRO ====");
+            System.out.println("=====================");
+            System.out.println("\t1. Criar Carro");
+            System.out.println("\t2. Listar Carros");
+            System.out.println("\t3. Alterar Dados");
+            System.out.println("\t4. Deletar Dados");
+            System.out.println("\t5. Sair");
+            System.out.print("Escolha uma opção: ");
+            opc = in.nextInt();
+
+            in.nextLine();
+
+            switch (opc) {
+                case 1:
+                    this.createCarro();
+                    break;
+                case 2:
+                    this.readCarro();
+                    break;
+                case 3:
+                    this.updateCarro();
+                    break;
+                case 4:
+                    this.deleteCarro();
+                    break;
+                case 5:
+                    System.out.println("Tchau!");
+                    break;
+                default:
+                    System.out.println("Opção Inválida!");
+                    break;
+            }
+
+        } while (opc != 5);
+    }
+    private void imprimirMenuComputador() {
+        int opc = 0;
+        do {
+            System.out.println("\n==========================");
+            System.out.println("==== Menu: Computador ====");
+            System.out.println("==========================");
+            System.out.println("\t1. Criar Computador");
+            System.out.println("\t2. Listar Computadores");
+            System.out.println("\t3. Alterar Dados");
+            System.out.println("\t4. Deletar Dados");
+            System.out.println("\t5. Sair");
+            System.out.print("Escolha uma opção: ");
+            opc = in.nextInt();
+
+            in.nextLine();
+
+            switch (opc) {
+                case 1:
+                    this.createComputador();
+                    break;
+                case 2:
+                    this.readComputador();
+                    break;
+                case 3:
+                    this.updateComputador();
+                    break;
+                case 4:
+                    this.deleteComputador();
                     break;
                 case 5:
                     System.out.println("Tchau!");
@@ -87,14 +195,14 @@ public class InterfaceUsuario {
         pais.setPopulacao(in.nextLine());
 
 
-        if (dao.create(pais)) {
+        if (paisDAO.create(pais)) {
             System.out.println(pais.getNome()+" adicionado ao banco de Dados");
         } else {
             System.out.println("Ops: problema ao adicionar o pais");
         }
     }
     private void readPais() {
-        List<Pais> paises = dao.read();
+        List<Pais> paises = paisDAO.read();
 
         System.out.println("\n***********************************");
         System.out.println("*** Lista de Paises Cadastrados ***");
@@ -105,7 +213,7 @@ public class InterfaceUsuario {
     }
     private void updatePais() {
         Pais pais = new Pais();
-        List<Pais> paises = dao.read();
+        List<Pais> paises = paisDAO.read();
 
         while (true) {
             System.out.println("\n***********************************");
@@ -141,7 +249,7 @@ public class InterfaceUsuario {
             if (opc >= paises.size() || opc < 0) {
                 System.out.println("Esta opção não é válida");
             } else {
-                if (dao.update(pais)) {
+                if (paisDAO.update(pais)) {
                     System.out.println("Dados de "+pais.getNome()+" alterados!");
                 } else {
                     System.out.println("OPS: falar ao tentar alterar dados");
@@ -151,7 +259,7 @@ public class InterfaceUsuario {
         }
     }
     private void deletePais() {
-        List<Pais> paises = dao.read();
+        List<Pais> paises = paisDAO.read();
 
         while (true) {
             System.out.println("\n***********************************");
@@ -175,7 +283,7 @@ public class InterfaceUsuario {
             if (opc >= paises.size() || opc < 0) {
                 System.out.println("Esta opção não é válida");
             } else {
-                if (dao.delete(paises.get(opc))) {
+                if (paisDAO.delete(paises.get(opc))) {
                     System.out.println(paises.get(opc).getNome() +
                             " removido com sucesso");
                 } else {
@@ -292,13 +400,13 @@ public class InterfaceUsuario {
         }
     }
 
-    // CRUD - Computador by GABI
+    // CRUD - Computador by GABRIELLE
     private void createComputador() {
         Computador computador = new Computador();
 
-        System.out.println("\n******************");
+        System.out.println("\n***********************");
         System.out.println("*** Novo Computador ***");
-        System.out.println("******************");
+        System.out.println("***********************");
         System.out.print("\nInforme o SERIAL do computador: ");
         computador.setIdComputador(in.nextLine());
         in.nextLine();
@@ -321,9 +429,9 @@ public class InterfaceUsuario {
     private void readComputador() {
         List<Computador> computadores = computadorDAO.read();
 
-        System.out.println("\n***********************************");
+        System.out.println("\n*****************************************");
         System.out.println("*** Lista de Computadores Cadastrados ***");
-        System.out.println("***********************************");
+        System.out.println("*****************************************");
         for(Computador computador : computadores) {
             System.out.println(computador);
         }
@@ -336,9 +444,9 @@ public class InterfaceUsuario {
             System.out.println(computador1);
         }
 
-        System.out.println("\n***********************************");
+        System.out.println("\n*****************************************");
         System.out.println("*** Lista de Computadores Cadastrados ***");
-        System.out.println("***********************************");
+        System.out.println("*****************************************");
 
         System.out.println("Informe o SERIAL do computador que deseja alterar os dados: ");
         computador.setIdComputador(in.nextLine());
@@ -365,9 +473,9 @@ public class InterfaceUsuario {
         List<Computador> computadores = computadorDAO.read();
 
         while (true) {
-            System.out.println("\n***********************************");
+            System.out.println("\n*****************************************");
             System.out.println("*** Lista de Computadores Cadastrados ***");
-            System.out.println("***********************************");
+            System.out.println("*****************************************");
             int i = 0;
             for (Computador computador : computadores) {
                 System.out.println(i + " - " + computador);
