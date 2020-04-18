@@ -542,9 +542,10 @@ public class InterfaceUsuario {
         computador.setProcessador(in.nextLine());
 
         System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
-        in.nextLine();
         computador.setQtdRAM(in.nextLine());
 
+        System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
+        computador.setTamanhoDisco(in.nextLine());
 
         if (computadorDAO.create(computador)) {
             System.out.println("\nComputador adicionado ao Banco de Dados");
