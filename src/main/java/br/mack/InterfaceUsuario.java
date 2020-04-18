@@ -3,8 +3,8 @@ package br.mack;
 import br.mack.Carro.Carro;
 import br.mack.Carro.CarroDAO;
 
-import br.mack.Pais.PaisDAO;
 import br.mack.Pais.Pais;
+import br.mack.Pais.PaisDAO;
 
 import br.mack.Computador.Computador;
 import br.mack.Computador.ComputadorDAO;
@@ -217,9 +217,9 @@ public class InterfaceUsuario {
 
 
         if (carroDAO.create(carro)) {
-            System.out.println("Carro adicionado ao banco de Dados");
+            System.out.println("Carro adicionado ao Banco de Dados");
         } else {
-            System.out.println("Ops: problema ao adicionar o pais");
+            System.out.println("Ops: problema ao adicionar o carro");
         }
     }
     private void readCarro() {
@@ -260,9 +260,9 @@ public class InterfaceUsuario {
         carro.setCategoria(in.nextLine());
 
         if (carroDAO.update(carro)) {
-            System.out.println("Dados do carro da placa "+carro.getIdCarro()+" alterados!");
+            System.out.println("Dados do carro da placa " + carro.getIdCarro() + " alterados!");
         } else {
-            System.out.println("OPS: falar ao tentar alterar dados");
+            System.out.println("OPS: falha ao tentar alterar dados");
         }
     }
     private void deleteCarro() {
@@ -270,7 +270,7 @@ public class InterfaceUsuario {
 
         while (true) {
             System.out.println("\n***********************************");
-            System.out.println("*** Lista de Paises Cadastrados ***");
+            System.out.println("*** Lista de Carros Cadastrados ***");
             System.out.println("***********************************");
             int i = 0;
             for (Carro carro : carros) {
@@ -304,7 +304,7 @@ public class InterfaceUsuario {
         }
     }
 
-    // CRUD - Computador by Gabi
+    // CRUD - Computador by GABI
     private void createComputador() {
         Computador computador = new Computador();
 
