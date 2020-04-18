@@ -29,7 +29,7 @@ public class InterfaceUsuario {
         imprimirMenu();
     }
 
-    private void imprimirMenu(){
+    /* private void imprimirMenu(){
         int opc = 0;
         do {
             System.out.println("\n================================");
@@ -76,6 +76,7 @@ public class InterfaceUsuario {
             switch (opc) {
                 case 1:
                     this.createPais();
+
                     break;
                 case 2:
                     this.readPais();
@@ -95,8 +96,8 @@ public class InterfaceUsuario {
             }
 
         } while (opc != 5);
-    }
-    private void imprimirMenuCarro() {
+    } */
+    /* private void imprimirMenuCarro() {
         int opc = 0;
         do {
             System.out.println("\n=====================");
@@ -134,15 +135,15 @@ public class InterfaceUsuario {
             }
 
         } while (opc != 5);
-    }
-    private void imprimirMenuComputador() {
+    } */
+    private void imprimirMenu() {
         int opc = 0;
         do {
-            System.out.println("\n==========================");
-            System.out.println("==== Menu: Computador ====");
-            System.out.println("==========================");
-            System.out.println("\t1. Criar Computador");
-            System.out.println("\t2. Listar Computadores");
+            System.out.println("\n==============");
+            System.out.println("==== Menu ====");
+            System.out.println("==============");
+            System.out.println("\t1. Criar");
+            System.out.println("\t2. Listar");
             System.out.println("\t3. Alterar Dados");
             System.out.println("\t4. Deletar Dados");
             System.out.println("\t5. Sair");
@@ -153,16 +154,136 @@ public class InterfaceUsuario {
 
             switch (opc) {
                 case 1:
-                    this.createComputador();
+                    do {
+                        System.out.println("\n=========================");
+                        System.out.println("==== Menu de Criação ====");
+                        System.out.println("=========================");
+                        System.out.println("\t1. Criar Carro");
+                        System.out.println("\t2. Criar Computador");
+                        System.out.println("\t3. Criar Pais");
+                        System.out.println("\t4. Sair");
+                        System.out.print("Escolha uma opção: ");
+                        opc = in.nextInt();
+
+                        in.nextLine();
+
+                        switch (opc) {
+                            case 1:
+                                this.createCarro();
+                                break;
+                            case 2:
+                                this.createComputador();
+                                break;
+                            case 3:
+                                this.createPais();
+                                break;
+                            case 4:
+                                System.out.println("Voltando...");
+                                break;
+                            default:
+                                System.out.println("Opção Inválida!");
+                                break;
+                        }
+                    } while (opc != 4);
                     break;
                 case 2:
-                    this.readComputador();
+                    do {
+                        System.out.println("\n==============================");
+                        System.out.println("==== Menu de Visualização ====");
+                        System.out.println("==============================");
+                        System.out.println("\t1. Listar Carros");
+                        System.out.println("\t2. Listar Computadores");
+                        System.out.println("\t3. Listar Paises");
+                        System.out.println("\t4. Sair");
+                        System.out.print("Escolha uma opção: ");
+                        opc = in.nextInt();
+
+                        in.nextLine();
+
+                        switch (opc) {
+                            case 1:
+                                this.readCarro();
+                                break;
+                            case 2:
+                                this.readComputador();
+                                break;
+                            case 3:
+                                this.readPais();
+                                break;
+                            case 4:
+                                System.out.println("Voltando...");
+                                break;
+                            default:
+                                System.out.println("Opção Inválida!");
+                                break;
+                        }
+                    } while (opc != 4);
                     break;
                 case 3:
-                    this.updateComputador();
+                    do {
+                        System.out.println("\n====================================");
+                        System.out.println("==== Menu de Alteração de Dados ====");
+                        System.out.println("====================================");
+                        System.out.println("\t1. Alterar Dados de Carro");
+                        System.out.println("\t2. Alterar Dados de Computador");
+                        System.out.println("\t3. Alterar Dados de Pais");
+                        System.out.println("\t4. Sair");
+                        System.out.print("Escolha uma opção: ");
+                        opc = in.nextInt();
+
+                        in.nextLine();
+
+                        switch (opc) {
+                            case 1:
+                                this.updateCarro();
+                                break;
+                            case 2:
+                                this.updateComputador();
+                                break;
+                            case 3:
+                                this.updatePais();
+                                break;
+                            case 4:
+                                System.out.println("Voltando...");
+                                break;
+                            default:
+                                System.out.println("Opção Inválida!");
+                                break;
+                        }
+                    } while (opc != 4);
                     break;
                 case 4:
-                    this.deleteComputador();
+                    do {
+                        System.out.println("\n==========================");
+                        System.out.println("==== Menu de Exclusão ====");
+                        System.out.println("==========================");
+                        System.out.println("\t1. Deletar Carro");
+                        System.out.println("\t2. Deletar Computador");
+                        System.out.println("\t3. Deletar Pais");
+                        System.out.println("\t4. Sair");
+                        System.out.print("Escolha uma opção: ");
+                        opc = in.nextInt();
+
+                        in.nextLine();
+
+                        switch (opc) {
+                            case 1:
+                                this.deleteCarro();
+                                break;
+                            case 2:
+                                this.deleteComputador();
+                                break;
+                            case 3:
+                                this.deletePais();
+                                break;
+                            case 4:
+                                System.out.println("Voltando...");
+                                break;
+                            default:
+                                System.out.println("Opção Inválida!");
+                                break;
+                        }
+                    } while (opc != 4);
                     break;
                 case 5:
                     System.out.println("Tchau!");
@@ -308,12 +429,15 @@ public class InterfaceUsuario {
         System.out.print("Informe o MODELO do carro: ");
         carro.setModelo(in.nextLine());
 
+        System.out.print("Informe o MARCA do carro: ");
+        carro.setMarca(in.nextLine());
+
         System.out.print("Informe o ANO do carro: ");
         carro.setAno(in.nextInt());
 
         System.out.print("Informe a CATEGORIA do carro: ");
-        carro.setCategoria(in.nextLine());
         in.nextLine();
+        carro.setCategoria(in.nextLine());
 
         if (carroDAO.create(carro)) {
             System.out.println("\nCarro adicionado ao Banco de Dados");
@@ -410,7 +534,6 @@ public class InterfaceUsuario {
         System.out.println("***********************");
         System.out.print("\nInforme o SERIAL do computador: ");
         computador.setIdComputador(in.nextLine());
-        in.nextLine();
 
         System.out.print("Informe a MARCA do computador: ");
         computador.setMarcaComputador(in.nextLine());
@@ -419,10 +542,12 @@ public class InterfaceUsuario {
         computador.setProcessador(in.nextLine());
 
         System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
+        in.nextLine();
         computador.setQtdRAM(in.nextLine());
 
+
         if (computadorDAO.create(computador)) {
-            System.out.println("Computador adicionado ao Banco de Dados");
+            System.out.println("\nComputador adicionado ao Banco de Dados");
         } else {
             System.out.println("Ops: problema ao adicionar o computador");
         }

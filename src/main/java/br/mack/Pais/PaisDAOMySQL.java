@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PaisDAOMySQL implements PaisDAO {
-    private String createSQL = "INSERT INTO Pais VALUES (?, ?, ?,?)";
+    private String createSQL = "INSERT INTO Pais VALUES (?,?,?,?)";
     private String readSQL = "SELECT * FROM Pais";
     private String updateSQL = "UPDATE Pais SET nome=?, continente=?, populacao=? WHERE idPais=?";
     private String deleteSQL = "DELETE FROM Pais WHERE idPais=?";

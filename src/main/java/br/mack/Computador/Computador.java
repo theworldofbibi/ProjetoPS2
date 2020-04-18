@@ -52,7 +52,7 @@ public class Computador {
 
         @Override
         public String toString() {
-            return "Número serial do computador: " + getIdComputador() + "[Processador: " + processador + ", Marca do computador: " +
+            return "Número serial do computador: " + getIdComputador() + " [Processador: " + processador + ", Marca do computador: " +
                     marcaComputador + ", Quantidade de memória RAM: " + qtdRAM + ", Tamanho do disco: " + tamanhoDisco + "]";
         }
     }

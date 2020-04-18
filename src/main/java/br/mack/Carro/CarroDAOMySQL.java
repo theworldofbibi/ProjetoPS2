@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarroDAOMySQL implements CarroDAO{
-    private String createSQL = "INSERT INTO Carro VALUES (?, ?, ?, ?, ?)";
+    private String createSQL = "INSERT INTO `Projeto_PS2`.`Carro` (`idCarro`, `modelo`, `marca`, `ano`, `categoria`) VALUES (?, ?, ?, ?, ?);";
     private String readSQL = "SELECT * FROM Carro";
     private String updateSQL = "UPDATE Carro SET modelo=?, marca=?, ano=?, categoria=? WHERE idCarro=?";
     private String deleteSQL = "DELETE FROM Carro WHERE idCarro=?";

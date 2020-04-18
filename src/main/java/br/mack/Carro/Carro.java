@@ -59,7 +59,7 @@ public class Carro {
 
     @Override
     public String toString() {
-        return "Placa do Carro: " + getIdCarro() + "[Modelo: " + modelo + ", Marca: " +
+        return "Placa do Carro: " + getIdCarro() + " [Modelo: " + modelo + ", Marca: " +
                 marca + ", Ano: " + ano + ", Categoria: " + categoria + "]";
     }
 }
