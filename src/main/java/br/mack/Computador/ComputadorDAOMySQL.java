@@ -23,7 +23,6 @@ public class ComputadorDAOMySQL implements ComputadorDAO {
             try {
                 PreparedStatement stm = conexao.prepareStatement(createSQL);
 
-                //Inicializando os valores
                 stm.setString(1, computador.getIdComputador());
                 stm.setString(2, computador.getMarcaComputador());
                 stm.setString(3, computador.getProcessador());
@@ -31,10 +30,6 @@ public class ComputadorDAOMySQL implements ComputadorDAO {
                 stm.setString(5, computador.getTamanhoDisco());
 
                 int registros = stm.executeUpdate();
-
-                // Se a quantidade de registros modificados
-                // forem maiores que 1, significa que os dados
-                // foram inserido corretamente
                 return registros > 0 ? true : false;
 
             } catch (final SQLException ex) {
@@ -99,7 +94,6 @@ public class ComputadorDAOMySQL implements ComputadorDAO {
                 stm.setString(4, computador.getTamanhoDisco());
 
                 int registros = stm.executeUpdate();
-
                 return registros > 0 ? true : false;
 
             } catch (final SQLException ex) {
@@ -122,15 +116,9 @@ public class ComputadorDAOMySQL implements ComputadorDAO {
             try {
                 PreparedStatement stm = conexao.prepareStatement(deleteSQL);
 
-                //Inicializando os valores
-                // cuidado com a ordem, é diferente do insert
                 stm.setString(1, computador.getIdComputador());
 
                 int registros = stm.executeUpdate();
-
-                // Se a quantidade de registros modificados
-                // forem maiores que 1, significa que os dados
-                // foram inseridos corretamente
                 return registros > 0 ? true : false;
 
             } catch (final SQLException ex) {

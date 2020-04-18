@@ -45,22 +45,22 @@ public class InterfaceUsuario {
 
             switch (opc) {
                 case 1:
-                    this.create();
+                    this.createPais();
                     break;
                 case 2:
-                    this.read();
+                    this.readPais();
                     break;
                 case 3:
-                    this.update();
+                    this.updatePais();
                     break;
                 case 4:
-                    this.delete();
+                    this.deletePais();
                     break;
                 case 5:
-                    System.out.println("tchau :)");
+                    System.out.println("Tchau!");
                     break;
                 default:
-                    System.out.println("Opção Inválida");
+                    System.out.println("Opção Inválida!");
                     break;
             }
 
@@ -68,15 +68,14 @@ public class InterfaceUsuario {
     }
 
     // CRUD - País by TAYNÁ
-    private void create() {
+    private void createPais() {
         Pais pais = new Pais();
 
-        System.out.println("\n******************");
-        System.out.println("*** Novo Pais ***");
-        System.out.println("******************");
-        System.out.print("\nInforme a identificação do pais: ");
+        System.out.println("\n***************************");
+        System.out.println("*** Adicionar Novo Pais ***");
+        System.out.println("***************************");
+        System.out.print("\nInforme a SIGLA do pais (Exemplo: BRA): ");
         pais.setIdPais(in.nextLine());
-        in.nextLine();
 
         System.out.print("Informe o NOME do pais: ");
         pais.setNome(in.nextLine());
@@ -89,12 +88,12 @@ public class InterfaceUsuario {
 
 
         if (dao.create(pais)) {
-            System.out.println("Pais adicionado ao banco de Dados");
+            System.out.println(pais.getNome()+" adicionado ao banco de Dados");
         } else {
             System.out.println("Ops: problema ao adicionar o pais");
         }
     }
-    private void read() {
+    private void readPais() {
         List<Pais> paises = dao.read();
 
         System.out.println("\n***********************************");
@@ -104,12 +103,11 @@ public class InterfaceUsuario {
             System.out.println(pais);
         }
     }
-    private void update() {
+    private void updatePais() {
         Pais pais = new Pais();
         List<Pais> paises = dao.read();
 
         while (true) {
-            //Mostra todos os alunos cadastrados
             System.out.println("\n***********************************");
             System.out.println("*** Lista de paises Cadastrados ***");
             System.out.println("***********************************");
@@ -120,10 +118,8 @@ public class InterfaceUsuario {
             }
             System.out.println(i + " - Cancelar operação");
 
-            //escolhe qual aluno quer alterar os dados
             System.out.print("De qual pais deseja alterar os dados?: ");
             int opc = in.nextInt();
-            //Necessário para ler a quebra de linha (enter)
             in.nextLine();
 
             System.out.print("\nInforme o NOME do pais: ");
@@ -135,11 +131,10 @@ public class InterfaceUsuario {
             System.out.print("Informe a POPULAÇÃO do pais: ");
             pais.setPopulacao(in.nextLine());
 
-            System.out.print("Informe o IDENTIFICADOR do pais: ");
+            System.out.print("Informe a SIGLA do pais: ");
             pais.setIdPais(in.nextLine());
 
             if (opc==i) {
-                // Cancelar operação
                 break;
             }
 
@@ -151,12 +146,11 @@ public class InterfaceUsuario {
                 } else {
                     System.out.println("OPS: falar ao tentar alterar dados");
                 }
-                //Isso para o while infinito
                 break;
             }
         }
     }
-    private void delete() {
+    private void deletePais() {
         List<Pais> paises = dao.read();
 
         while (true) {
@@ -170,13 +164,11 @@ public class InterfaceUsuario {
             }
             System.out.println(i + " - Cancelar operação");
 
-            System.out.print("Qual pais deseja remover? ");
+            System.out.print("\nQual pais deseja remover? ");
             int opc = in.nextInt();
-            //Necessário para ler a quebra de linha (enter)
             in.nextLine();
 
             if (opc==i) {
-                // Cancelar operação
                 break;
             }
 
@@ -184,12 +176,11 @@ public class InterfaceUsuario {
                 System.out.println("Esta opção não é válida");
             } else {
                 if (dao.delete(paises.get(opc))) {
-                    System.out.println("Pais " + paises.get(opc).getNome() +
+                    System.out.println(paises.get(opc).getNome() +
                             " removido com sucesso");
                 } else {
                     System.out.println("OPS: falar ao tentar remover");
                 }
-                //Isso para o while infinito
                 break;
             }
         }
@@ -281,11 +272,9 @@ public class InterfaceUsuario {
 
             System.out.print("Qual carro deseja remover? ");
             int opc = in.nextInt();
-            //Necessário para ler a quebra de linha (enter)
             in.nextLine();
 
             if (opc==i) {
-                // Cancelar operação
                 break;
             }
 
@@ -298,7 +287,6 @@ public class InterfaceUsuario {
                 } else {
                     System.out.println("OPS: falha ao tentar remover");
                 }
-                //Isso para o while infinito
                 break;
             }
         }
@@ -389,11 +377,9 @@ public class InterfaceUsuario {
 
             System.out.print("Qual computador deseja remover? ");
             int opc = in.nextInt();
-            //Necessário para ler a quebra de linha (enter)
             in.nextLine();
 
             if (opc==i) {
-                // Cancelar operação
                 break;
             }
 
@@ -406,7 +392,6 @@ public class InterfaceUsuario {
                 } else {
                     System.out.println("OPS: falha ao tentar remover");
                 }
-                //Isso para o while infinito
                 break;
             }
         }

@@ -22,7 +22,6 @@ public class PaisDAOMySQL implements PaisDAO {
         try {
             PreparedStatement stm = conexao.prepareStatement(createSQL);
 
-            //Inicializando os valores
             stm.setString(1, pais.getIdPais());
             stm.setString(2, pais.getNome());
             stm.setString(3, pais.getContinente());
@@ -30,10 +29,6 @@ public class PaisDAOMySQL implements PaisDAO {
 
 
             int registros = stm.executeUpdate();
-
-            // Se a quantidade de registros modificados
-            // forem maiores que 1, significa que os dados
-            // foram inserido corretamente
             return registros > 0 ? true : false;
 
         } catch (final SQLException ex) {
@@ -88,18 +83,12 @@ public class PaisDAOMySQL implements PaisDAO {
         try {
             PreparedStatement stm = conexao.prepareStatement(updateSQL);
 
-            //Inicializando os valores
-            // cuidado com a ordem, eh diferente do insert
             stm.setString(1, pais.getNome());
             stm.setString(2, pais.getContinente());
             stm.setString(3, pais.getPopulacao());
             stm.setString(4,pais.getIdPais());
 
             int registros = stm.executeUpdate();
-
-            // Se a quantidade de registros modificados
-            // forem maiores que 1, significa que os dados
-            // foram inserido corretamente
             return registros > 0 ? true : false;
 
         } catch (final SQLException ex) {
@@ -122,15 +111,9 @@ public class PaisDAOMySQL implements PaisDAO {
         try {
             PreparedStatement stm = conexao.prepareStatement(deleteSQL);
 
-            //Inicializando os valores
-            // cuidado com a ordem, eh diferente do insert
             stm.setString(1, pais.getIdPais());
 
             int registros = stm.executeUpdate();
-
-            // Se a quantidade de registros modificados
-            // forem maiores que 1, significa que os dados
-            // foram inserido corretamente
             return registros > 0 ? true : false;
 
         } catch (final SQLException ex) {
