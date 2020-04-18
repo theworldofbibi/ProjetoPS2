@@ -23,20 +23,13 @@ public class CarroDAOMySQL implements CarroDAO{
         try {
             PreparedStatement stm = conexao.prepareStatement(createSQL);
 
-            //Inicializando os valores
             stm.setString(1, carro.getIdCarro());
             stm.setString(2, carro.getModelo());
             stm.setString(3, carro.getMarca());
             stm.setInt(4, carro.getAno());
             stm.setString(5, carro.getCategoria());
 
-
-
             int registros = stm.executeUpdate();
-
-            // Se a quantidade de registros modificados
-            // forem maiores que 1, significa que os dados
-            // foram inserido corretamente
             return registros > 0 ? true : false;
 
         } catch (final SQLException ex) {

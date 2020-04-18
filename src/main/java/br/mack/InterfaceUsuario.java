@@ -301,9 +301,9 @@ public class InterfaceUsuario {
         System.out.println("\n******************");
         System.out.println("*** Novo Carro ***");
         System.out.println("******************");
+
         System.out.print("\nInforme a PLACA do carro: ");
         carro.setIdCarro(in.nextLine());
-        in.nextLine();
 
         System.out.print("Informe o MODELO do carro: ");
         carro.setModelo(in.nextLine());
@@ -313,10 +313,10 @@ public class InterfaceUsuario {
 
         System.out.print("Informe a CATEGORIA do carro: ");
         carro.setCategoria(in.nextLine());
-
+        in.nextLine();
 
         if (carroDAO.create(carro)) {
-            System.out.println("Carro adicionado ao Banco de Dados");
+            System.out.println("\nCarro adicionado ao Banco de Dados");
         } else {
             System.out.println("Ops: problema ao adicionar o carro");
         }
@@ -343,7 +343,7 @@ public class InterfaceUsuario {
         System.out.println("*** Lista de Carros Cadastrados ***");
         System.out.println("***********************************");
 
-        System.out.println("Informe a PLACA do carro que deseja alterar os dados: ");
+        System.out.print("Informe a PLACA do carro que deseja alterar os dados: ");
         carro.setIdCarro(in.nextLine());
 
         System.out.print("\nInforme o MODELO do carro: ");
@@ -357,11 +357,12 @@ public class InterfaceUsuario {
 
         System.out.print("Informe o CATEGORIA do carro: ");
         carro.setCategoria(in.nextLine());
+        in.nextLine();
 
         if (carroDAO.update(carro)) {
-            System.out.println("Dados do carro da placa " + carro.getIdCarro() + " alterados!");
+            System.out.println("\nDados do carro da placa " + carro.getIdCarro() + " alterados!");
         } else {
-            System.out.println("OPS: falha ao tentar alterar dados");
+            System.out.println("\nOPS: falha ao tentar alterar dados");
         }
     }
     private void deleteCarro() {
@@ -378,7 +379,7 @@ public class InterfaceUsuario {
             }
             System.out.println(i + " - Cancelar operação");
 
-            System.out.print("Qual carro deseja remover? ");
+            System.out.print("\nQual carro deseja remover? ");
             int opc = in.nextInt();
             in.nextLine();
 
@@ -390,10 +391,10 @@ public class InterfaceUsuario {
                 System.out.println("Esta opção não é válida");
             } else {
                 if (carroDAO.delete(carros.get(opc))) {
-                    System.out.println("Carro da Placa: " + carros.get(opc).getIdCarro() +
+                    System.out.println("\nCarro da Placa: " + carros.get(opc).getIdCarro() +
                             " removido com sucesso");
                 } else {
-                    System.out.println("OPS: falha ao tentar remover");
+                    System.out.println("\nOPS: falha ao tentar remover");
                 }
                 break;
             }
