@@ -6,12 +6,16 @@ import br.mack.Carro.CarroDAO;
 import br.mack.Pais.PaisDAO;
 import br.mack.Pais.Pais;
 
+import br.mack.Computador.Computador;
+import br.mack.Computador.ComputadorDAO;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class InterfaceUsuario {
     PaisDAO dao;
     CarroDAO carroDAO;
+    ComputadorDAO computadorDAO;
     Scanner in;
 
     public InterfaceUsuario(PaisDAO dao) {
@@ -300,7 +304,111 @@ public class InterfaceUsuario {
         }
     }
 
+    // CRUD - Computador by Gabi
+    private void createComputador() {
+        Computador computador = new Computador();
 
+        System.out.println("\n******************");
+        System.out.println("*** Novo Computador ***");
+        System.out.println("******************");
+        System.out.print("\nInforme o SERIAL do computador: ");
+        computador.setIdComputador(in.nextLine());
+        in.nextLine();
 
+        System.out.print("Informe a MARCA do computador: ");
+        computador.setMarcaComputador(in.nextLine());
 
+        System.out.print("Informe o PROCESSADOR do computador: ");
+        computador.setProcessador(in.nextLine());
+
+        System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
+        computador.setQtdRAM(in.nextLine());
+
+        if (computadorDAO.create(computador)) {
+            System.out.println("Computador adicionado ao Banco de Dados");
+        } else {
+            System.out.println("Ops: problema ao adicionar o computador");
+        }
+    }
+    private void readComputador() {
+        List<Computador> computadores = computadorDAO.read();
+
+        System.out.println("\n***********************************");
+        System.out.println("*** Lista de Computadores Cadastrados ***");
+        System.out.println("***********************************");
+        for(Computador computador : computadores) {
+            System.out.println(computador);
+        }
+    }
+    private void updateComputador() {
+        Computador computador = new Computador();
+
+        List<Computador> computadores = computadorDAO.read();
+        for(Computador computador1 : computadores) {
+            System.out.println(computador1);
+        }
+
+        System.out.println("\n***********************************");
+        System.out.println("*** Lista de Computadores Cadastrados ***");
+        System.out.println("***********************************");
+
+        System.out.println("Informe o SERIAL do computador que deseja alterar os dados: ");
+        computador.setIdComputador(in.nextLine());
+
+        System.out.print("\nInforme a MARCA do computador: ");
+        computador.setMarcaComputador(in.nextLine());
+
+        System.out.print("Informe o PROCESSADOR do computador: ");
+        computador.setProcessador(in.nextLine());
+
+        System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
+        computador.setQtdRAM(in.nextLine());
+
+        System.out.print("Informe o TAMANHO DO DISCO do computador: ");
+        computador.setTamanhoDisco(in.nextLine());
+
+        if (computadorDAO.update(computador)) {
+            System.out.println("Dados do computador de serial " + computador.getIdComputador() + " alterados!");
+        } else {
+            System.out.println("OPS: falha ao tentar alterar dados");
+        }
+    }
+    private void deleteComputador() {
+        List<Computador> computadores = computadorDAO.read();
+
+        while (true) {
+            System.out.println("\n***********************************");
+            System.out.println("*** Lista de Computadores Cadastrados ***");
+            System.out.println("***********************************");
+            int i = 0;
+            for (Computador computador : computadores) {
+                System.out.println(i + " - " + computador);
+                i++;
+            }
+            System.out.println(i + " - Cancelar operação");
+
+            System.out.print("Qual computador deseja remover? ");
+            int opc = in.nextInt();
+            //Necessário para ler a quebra de linha (enter)
+            in.nextLine();
+
+            if (opc==i) {
+                // Cancelar operação
+                break;
+            }
+
+            if (opc >= computadores.size() || opc < 0) {
+                System.out.println("Esta opção não é válida");
+            } else {
+                if (computadorDAO.delete(computadores.get(opc))) {
+                    System.out.println("Computador de Serial: " + computadores.get(opc).getIdComputador() +
+                            " removido com sucesso");
+                } else {
+                    System.out.println("OPS: falha ao tentar remover");
+                }
+                //Isso para o while infinito
+                break;
+            }
+        }
+    }
 }
