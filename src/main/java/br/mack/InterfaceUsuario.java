@@ -61,10 +61,10 @@ public class InterfaceUsuario {
         int opc = 0;
         do {
             System.out.println("\n===================");
-            System.out.println("==== Menu: PAIS====");
+            System.out.println("==== Menu: PAÍS====");
             System.out.println("===================");
-            System.out.println("\t1. Criar Pais");
-            System.out.println("\t2. Listar Paises");
+            System.out.println("\t1. Criar País");
+            System.out.println("\t2. Listar Países");
             System.out.println("\t3. Alterar Dados");
             System.out.println("\t4. Deletar Dados");
             System.out.println("\t5. Sair");
@@ -76,7 +76,6 @@ public class InterfaceUsuario {
             switch (opc) {
                 case 1:
                     this.createPais();
-
                     break;
                 case 2:
                     this.readPais();
@@ -133,7 +132,6 @@ public class InterfaceUsuario {
                     System.out.println("Opção Inválida!");
                     break;
             }
-
         } while (opc != 5);
     } */
     private void imprimirMenu() {
@@ -160,7 +158,7 @@ public class InterfaceUsuario {
                         System.out.println("=========================");
                         System.out.println("\t1. Criar Carro");
                         System.out.println("\t2. Criar Computador");
-                        System.out.println("\t3. Criar Pais");
+                        System.out.println("\t3. Criar País");
                         System.out.println("\t4. Sair");
                         System.out.print("Escolha uma opção: ");
                         opc = in.nextInt();
@@ -193,7 +191,7 @@ public class InterfaceUsuario {
                         System.out.println("==============================");
                         System.out.println("\t1. Listar Carros");
                         System.out.println("\t2. Listar Computadores");
-                        System.out.println("\t3. Listar Paises");
+                        System.out.println("\t3. Listar Países");
                         System.out.println("\t4. Sair");
                         System.out.print("Escolha uma opção: ");
                         opc = in.nextInt();
@@ -226,7 +224,7 @@ public class InterfaceUsuario {
                         System.out.println("====================================");
                         System.out.println("\t1. Alterar Dados de Carro");
                         System.out.println("\t2. Alterar Dados de Computador");
-                        System.out.println("\t3. Alterar Dados de Pais");
+                        System.out.println("\t3. Alterar Dados de País");
                         System.out.println("\t4. Sair");
                         System.out.print("Escolha uma opção: ");
                         opc = in.nextInt();
@@ -259,7 +257,7 @@ public class InterfaceUsuario {
                         System.out.println("==========================");
                         System.out.println("\t1. Deletar Carro");
                         System.out.println("\t2. Deletar Computador");
-                        System.out.println("\t3. Deletar Pais");
+                        System.out.println("\t3. Deletar País");
                         System.out.println("\t4. Sair");
                         System.out.print("Escolha uma opção: ");
                         opc = in.nextInt();
@@ -292,7 +290,6 @@ public class InterfaceUsuario {
                     System.out.println("Opção Inválida!");
                     break;
             }
-
         } while (opc != 5);
     }
 
@@ -301,32 +298,32 @@ public class InterfaceUsuario {
         Pais pais = new Pais();
 
         System.out.println("\n***************************");
-        System.out.println("*** Adicionar Novo Pais ***");
+        System.out.println("*** Adicionar Novo País ***");
         System.out.println("***************************");
-        System.out.print("\nInforme a SIGLA do pais (Exemplo: BRA): ");
+        System.out.print("\nInforme a SIGLA do país (Exemplo: BRA): ");
         pais.setIdPais(in.nextLine());
 
-        System.out.print("Informe o NOME do pais: ");
+        System.out.print("Informe o NOME do país: ");
         pais.setNome(in.nextLine());
 
-        System.out.print("Informe o CONTINENTE do pais: ");
+        System.out.print("Informe o CONTINENTE do país: ");
         pais.setContinente(in.nextLine());
 
-        System.out.print("Informe a POPULAÇÃO do pais: ");
+        System.out.print("Informe a POPULAÇÃO do país: ");
         pais.setPopulacao(in.nextLine());
 
 
         if (paisDAO.create(pais)) {
-            System.out.println(pais.getNome()+" adicionado ao banco de Dados");
+            System.out.println(pais.getNome()+" adicionado ao Banco de Dados");
         } else {
-            System.out.println("Ops: problema ao adicionar o pais");
+            System.out.println("Ops: problema ao adicionar o país");
         }
     }
     private void readPais() {
         List<Pais> paises = paisDAO.read();
 
         System.out.println("\n***********************************");
-        System.out.println("*** Lista de Paises Cadastrados ***");
+        System.out.println("*** Lista de Países Cadastrados ***");
         System.out.println("***********************************");
         for(Pais pais : paises) {
             System.out.println(pais);
@@ -338,7 +335,7 @@ public class InterfaceUsuario {
 
         while (true) {
             System.out.println("\n***********************************");
-            System.out.println("*** Lista de paises Cadastrados ***");
+            System.out.println("*** Lista de Países Cadastrados ***");
             System.out.println("***********************************");
             int i = 0;
             for (Pais pais1 : paises) {
@@ -347,20 +344,20 @@ public class InterfaceUsuario {
             }
             System.out.println(i + " - Cancelar operação");
 
-            System.out.print("De qual pais deseja alterar os dados?: ");
+            System.out.print("De qual país deseja alterar os dados?: ");
             int opc = in.nextInt();
             in.nextLine();
 
-            System.out.print("\nInforme o NOME do pais: ");
+            System.out.print("\nInforme o NOME do país: ");
             pais.setNome(in.nextLine());
 
-            System.out.print("Informe o CONTINENTE do pais: ");
+            System.out.print("Informe o CONTINENTE do país: ");
             pais.setContinente(in.nextLine());
 
-            System.out.print("Informe a POPULAÇÃO do pais: ");
+            System.out.print("Informe a POPULAÇÃO do país: ");
             pais.setPopulacao(in.nextLine());
 
-            System.out.print("Informe a SIGLA do pais: ");
+            System.out.print("Informe a SIGLA do país: ");
             pais.setIdPais(in.nextLine());
 
             if (opc==i) {
@@ -371,9 +368,9 @@ public class InterfaceUsuario {
                 System.out.println("Esta opção não é válida");
             } else {
                 if (paisDAO.update(pais)) {
-                    System.out.println("Dados de "+pais.getNome()+" alterados!");
+                    System.out.println("Dados de " + pais.getNome() + " alterados!");
                 } else {
-                    System.out.println("OPS: falar ao tentar alterar dados");
+                    System.out.println("OPS: falha ao tentar alterar dados");
                 }
                 break;
             }
@@ -384,7 +381,7 @@ public class InterfaceUsuario {
 
         while (true) {
             System.out.println("\n***********************************");
-            System.out.println("*** Lista de Paises Cadastrados ***");
+            System.out.println("*** Lista de Países Cadastrados ***");
             System.out.println("***********************************");
             int i = 0;
             for (Pais pais : paises) {
@@ -393,7 +390,7 @@ public class InterfaceUsuario {
             }
             System.out.println(i + " - Cancelar operação");
 
-            System.out.print("\nQual pais deseja remover? ");
+            System.out.print("\nQual país deseja remover? ");
             int opc = in.nextInt();
             in.nextLine();
 
@@ -408,7 +405,7 @@ public class InterfaceUsuario {
                     System.out.println(paises.get(opc).getNome() +
                             " removido com sucesso");
                 } else {
-                    System.out.println("OPS: falar ao tentar remover");
+                    System.out.println("OPS: falha ao tentar remover");
                 }
                 break;
             }
@@ -544,7 +541,7 @@ public class InterfaceUsuario {
         System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
         computador.setQtdRAM(in.nextLine());
 
-        System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
+        System.out.print("Informe o TAMANHO DO DISCO do computador: ");
         computador.setTamanhoDisco(in.nextLine());
 
         if (computadorDAO.create(computador)) {
