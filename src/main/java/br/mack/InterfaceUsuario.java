@@ -24,11 +24,9 @@ public class InterfaceUsuario {
         this.computadorDAO = computadorDAO;
         this.in = new Scanner(System.in);
     }
-
     public void iniciar() {
         imprimirMenu();
     }
-
     /* private void imprimirMenu(){
         int opc = 0;
         do {
@@ -526,9 +524,10 @@ public class InterfaceUsuario {
     private void createComputador() {
         Computador computador = new Computador();
 
-        System.out.println("\n***********************");
+        System.out.println("\n******************");
         System.out.println("*** Novo Computador ***");
-        System.out.println("***********************");
+        System.out.println("******************");
+
         System.out.print("\nInforme o SERIAL do computador: ");
         computador.setIdComputador(in.nextLine());
 
@@ -538,7 +537,7 @@ public class InterfaceUsuario {
         System.out.print("Informe o PROCESSADOR do computador: ");
         computador.setProcessador(in.nextLine());
 
-        System.out.print("Informe a QUANTIDADE DE MEMÓRIA RAM do computador: ");
+        System.out.print("Informe a QUANTIDADE DE MEMORIA RAM do computador: ");
         computador.setQtdRAM(in.nextLine());
 
         System.out.print("Informe o TAMANHO DO DISCO do computador: ");

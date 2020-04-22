@@ -32,7 +32,7 @@ public class Computador {
         public String getProcessador() {
             return processador;
         }
-        public void setProcessador(String marca) {
+        public void setProcessador(String processador) {
             this.processador = processador;
         }
 
@@ -52,7 +52,7 @@ public class Computador {
 
         @Override
         public String toString() {
-            return "Número serial do computador: " + getIdComputador() + " [Processador: " + processador + ", Marca do computador: " +
-                    marcaComputador + ", Quantidade de memória RAM: " + qtdRAM + ", Tamanho do disco: " + tamanhoDisco + "]";
+            return "Número serial do computador: " + getIdComputador() + "[Marca do computador: " +
+                    marcaComputador + ", Processador: " + processador + ",Quantidade de memória RAM: " + qtdRAM + ", Tamanho do disco: " + tamanhoDisco + "]";
         }
     }
