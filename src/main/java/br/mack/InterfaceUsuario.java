@@ -1,5 +1,4 @@
 package br.mack;
-
 import br.mack.Carro.Carro;
 import br.mack.Carro.CarroDAO;
 
@@ -27,111 +26,7 @@ public class InterfaceUsuario {
     public void iniciar() {
         imprimirMenu();
     }
-    /* private void imprimirMenu(){
-        int opc = 0;
-        do {
-            System.out.println("\n================================");
-            System.out.println("==== Menu De Banco de Dados ====");
-            System.out.println("================================");
-            System.out.println("\t1. Acessar Carro ");
-            System.out.println("\t2. Acessar Computador");
-            System.out.println("\t3. Acessar Pais");
-            System.out.println("\t4. Sair");
-            System.out.print("Escolha uma opção: ");
-            opc = in.nextInt();
-            in.nextLine();
 
-            switch (opc) {
-                case 1:
-                    this.imprimirMenuCarro();
-                    break;
-                case 2:
-                    this.imprimirMenuComputador();
-                    break;
-                case 3:
-                    this.imprimirMenuPais();
-                    break;
-            }
-        } while (opc != 4);
-    }
-
-    private void imprimirMenuPais() {
-        int opc = 0;
-        do {
-            System.out.println("\n===================");
-            System.out.println("==== Menu: PAÍS====");
-            System.out.println("===================");
-            System.out.println("\t1. Criar País");
-            System.out.println("\t2. Listar Países");
-            System.out.println("\t3. Alterar Dados");
-            System.out.println("\t4. Deletar Dados");
-            System.out.println("\t5. Sair");
-            System.out.print("Escolha uma opção: ");
-            opc = in.nextInt();
-
-            in.nextLine();
-
-            switch (opc) {
-                case 1:
-                    this.createPais();
-                    break;
-                case 2:
-                    this.readPais();
-                    break;
-                case 3:
-                    this.updatePais();
-                    break;
-                case 4:
-                    this.deletePais();
-                    break;
-                case 5:
-                    System.out.println("Tchau!");
-                    break;
-                default:
-                    System.out.println("Opção Inválida!");
-                    break;
-            }
-
-        } while (opc != 5);
-    } */
-    /* private void imprimirMenuCarro() {
-        int opc = 0;
-        do {
-            System.out.println("\n=====================");
-            System.out.println("==== Menu: CARRO ====");
-            System.out.println("=====================");
-            System.out.println("\t1. Criar Carro");
-            System.out.println("\t2. Listar Carros");
-            System.out.println("\t3. Alterar Dados");
-            System.out.println("\t4. Deletar Dados");
-            System.out.println("\t5. Sair");
-            System.out.print("Escolha uma opção: ");
-            opc = in.nextInt();
-
-            in.nextLine();
-
-            switch (opc) {
-                case 1:
-                    this.createCarro();
-                    break;
-                case 2:
-                    this.readCarro();
-                    break;
-                case 3:
-                    this.updateCarro();
-                    break;
-                case 4:
-                    this.deleteCarro();
-                    break;
-                case 5:
-                    System.out.println("Tchau!");
-                    break;
-                default:
-                    System.out.println("Opção Inválida!");
-                    break;
-            }
-        } while (opc != 5);
-    } */
     private void imprimirMenu() {
         int opc = 0;
         do {
