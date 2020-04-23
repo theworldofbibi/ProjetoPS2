@@ -20,7 +20,6 @@ public class Carro {
     public String getIdCarro() {
         return idCarro;
     }
-
     public void setIdCarro(String idCarro) {
         this.idCarro = idCarro;
     }
@@ -28,7 +27,6 @@ public class Carro {
     public String getModelo() {
         return modelo;
     }
-
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
@@ -36,7 +34,6 @@ public class Carro {
     public String getMarca() {
         return marca;
     }
-
     public void setMarca(String marca) {
         this.marca = marca;
     }
@@ -44,7 +41,6 @@ public class Carro {
     public int getAno() {
         return ano;
     }
-
     public void setAno(int ano) {
         this.ano = ano;
     }
@@ -52,7 +48,6 @@ public class Carro {
     public String getCategoria() {
         return categoria;
     }
-
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
